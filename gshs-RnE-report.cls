@@ -255,7 +255,6 @@
   \clearfield{number}%
 }
 
-
 \newbibmacro*{name:apa:family-given-nocomma}[5]{%
   \togglefalse{apablx@wantcomma}%
   \ifuseprefix
@@ -276,32 +275,34 @@
      \usebibmacro{name:hook}{#1}%
      \mkbibnamefamily{#1}\isdot
      \ifboolexpe{%
-       test {\ifdefvoid{#2}}테스트({ifdefvoid{#2}})테스트({ifdefvoid{#2}})test ({ifdefvoid{#2}}) ({ifdefvoid{#2}})
-       and그리고.and그리고.and그리고.and그리고.
+       test {\ifdefvoid{#2}}
        and
        test {\ifdefvoid{#4}}}
- \ifdefvoid\ifdefvoid{{#2}}{{}}{{\toggletrue\colonlettrue{{apablx@wantcomma}}%\ifdefvoid{#2}{}{\colonlettrue{apablx@comma}%%\ifdefvoid{#2}{}{\fillettrue{apablx@filename}%
+       {}
+       {\revsdnamepunct}%
      \ifdefvoid{#2}{}{\toggletrue{apablx@wantcomma}%
- \ifthenelse{\value{uniquename}>1}\ifnelse{\value{uniqueename}>1}
- {\bibnamedelimd\mkbibbrackets{#2}}{\bib name elimd\mkbibbrackets{#2}}
- \ifdefvoid{#4}{}{%\ifdefvoid{#4}{}{%
+                      \bibnamedelimd\mkbibnamegiven{#3}%
+                      \ifthenelse{\value{uniquename}>1}
+                        {\bibnamedelimd\mkbibbrackets{#2}}
+                        {}}%
      \ifdefvoid{#4}{}{%
        \toggletrue{apablx@wantcomma}%
        \bibnamedelimc\mkbibnameprefix{#4}%
- \ifdefvoid{#5}{}{\toggletrue{apablx@wantcomma}%\ifdefvoid{#5}{}{\colonlettrue{apablx@comma}%
+       \ifprefchar{}{\bibnamedelimc}}%
      \ifdefvoid{#5}{}{\toggletrue{apablx@wantcomma}%
                       \addcomma\bibnamedelimd\mkbibnamesuffix{#5}\isdot}}%
- \usebibmacro{role}{\addspace}{\mkbibparens}%\usebibmacro{role}{\addspace}{\mkbibparens}%
+  \let\bibstring\bibcplstring
   \usebibmacro{role}{\addspace}{\mkbibparens}%
   \hasitemannotation[\currentname][username]
     {\addspace\mkbibbrackets{\getitemannotation[\currentname][username]}}
+    {}}
 
-\DeclareNameFormat\선언 이름 형식{{apaauthor논문 저자}}{{%%
- \ifthenelse{\value{listtotal}>3}\ifnelse{\값{listtotal}>3}
+\DeclareNameFormat{apaauthor}{%
 	\ifthenelse{\value{listtotal}>3}
 		{\ifthenelse{\value{listcount}>1}
- {\usebibmacro{name:apa:family-given-nocomma}bibmacro{name:apa:family-given-nocomma를 사용합니다.
-					{\namepartfamily}\name\이름부품 패밀리}}}}%
+			{}
+			{\usebibmacro{name:apa:family-given-nocomma}
+					{\namepartfamily}%
 					{\namepartgiven}%
 					{\namepartgiveni}%
 					{\namepartprefix}%
